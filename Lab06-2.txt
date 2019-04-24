@@ -1,0 +1,65 @@
+#define Do1 523
+#define Re1 587
+#define Mi1 659
+#define Fa1 698
+#define So1 784
+#define La1 880
+#define Si1 988
+#define SP_PIN 9
+#define Do2 1046
+#define Re2 1175
+#define Mi2 1318
+#define Fa2 1397
+#define So2 1568
+#define La2 1760
+#define Si2 1976
+#define Do0 261
+#define Re0 294
+
+#define HALF 0.5
+#define WHOLE 1
+#define QUARTER 0.25
+#define EIGHTH 0.125
+
+#include<Keypad.h>
+const byte ROWS=4;
+const byte COLS=4;
+
+char keys[ROWS][COLS]={{'7','8','9','C'},{'4','5','6','D'},{'1','2','3','E'},{'0','A','B','F'}};
+
+byte rowPins[ROWS]={2,3,4,5};
+byte colPins[COLS]={8,9,10,11};
+
+Keypad keypad=Keypad(makeKeymap(keys),rowPins,colPins,ROWS,COLS);
+
+float duration[]={QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF};
+int tune[]={Do1,Re1,Mi1,Fa1,So1,La1,Si1,Do2,Re2,Mi2,Fa2,So2,La2,Si2,Do0,Re0};
+ int length1 = sizeof(tune) / sizeof(tune[0]);
+void setup() {
+ pinMode(14,OUTPUT);
+  Serial.begin(9600);
+
+
+}
+
+void loop() {
+
+char key=keypad.getKey();
+int x=0;
+    if(key!=NO_KEY)
+   {
+    if(key>='A' && key<='F' )
+    x=key-'A'+10;
+    else 
+    x=key-'0'+0;
+    
+    tone(14,tune[x]);
+    delay(2500);
+    noTone(14);
+    
+   }
+   }
+    
+  
+
+

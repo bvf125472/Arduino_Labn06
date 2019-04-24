@@ -1,0 +1,38 @@
+#define Do1 523
+#define Re1 587
+#define Mi1 659
+#define Fa1 698
+#define So1 784
+#define La1 880
+#define Si1 988
+#define SP_PIN 9
+#define Do2 1046
+#define Re2 1175
+#define HALF 0.5
+#define WHOLE 1
+#define QUARTER 0.25
+#define EIGHTH 0.125
+
+int tune[]={Re2,Re2,Re2,Do2,Si1,Do2,Do2,Do2,Si1,La1,Si1,Si1,Re2,So1,La1,La1,Re2,Re2,Re2,Do1,Si1,Do2,Do2,Do2,Si1,La1,Si1,Si1,Re2,So1,La1,So1,La1,La1,La1,Si1,Do2,Si1,So1,Re2,La1,La1,La1,Si1,Do2,Si1,So1,Re2,Re2,Re2,Re2,Do1,Si1,Do1,Do1,Do1,Si1,La1,Si1,Si1,Re2,So1,La1,So1};
+float duration[]={QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,HALF,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,EIGHTH,EIGHTH,QUARTER,QUARTER,QUARTER,QUARTER,QUARTER,HALF,HALF};
+
+ int length1 = sizeof(tune) / sizeof(tune[0]);
+void setup() {
+ pinMode(9,OUTPUT);
+
+
+
+}
+
+void loop() {
+
+    for (int x=0; x<length1; x++) {
+      tone(9, tune[x]);
+      delay(2500 *duration[x]); 
+      noTone(9);
+       }
+   delay(5000);
+
+
+
+}
